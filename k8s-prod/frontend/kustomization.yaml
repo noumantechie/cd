@@ -7,4 +7,4 @@ resources:
 images:
   - name: noman071/frontend
     newName: noman071/frontend
-    newTag: latest
+    newTag: 1.0.0-1
