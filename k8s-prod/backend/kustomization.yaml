@@ -4,11 +4,7 @@ kind: Kustomization
 resources:
   - backend.yaml
 
-# Shared resources from mysql folder
-resources:
-  - ../mysql/mysql.yaml
-
 images:
   - name: noman071/backend
     newName: noman071/backend
-    newTag: dd1a15216493c150ff6ed56458e6061cbefdd983
+    newTag: latest

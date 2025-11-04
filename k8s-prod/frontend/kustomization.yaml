@@ -4,11 +4,7 @@ kind: Kustomization
 resources:
   - frontend.yaml
 
-# Shared resources from mysql folder
-resources:
-  - ../mysql/mysql.yaml
-
 images:
   - name: noman071/frontend
     newName: noman071/frontend
-    newTag: dd1a15216493c150ff6ed56458e6061cbefdd983
+    newTag: latest
