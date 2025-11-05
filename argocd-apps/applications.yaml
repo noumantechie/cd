@@ -1,7 +1,4 @@
 ---
-# ═══════════════════════════════════════════════════════
-# Backend Application
-# ═══════════════════════════════════════════════════════
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -10,35 +7,28 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: backend=noman071/backend
     argocd-image-updater.argoproj.io/backend.update-strategy: semver
-    argocd-image-updater.argoproj.io/backend.allow-tags: regexp:^1\.0\.0-([0-9]+)$
+    argocd-image-updater.argoproj.io/backend.allow-tags: regexp:^1\\.0\\.0-[0-9]+$
+    argocd-image-updater.argoproj.io/backend.ignore-tags: latest
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
     argocd-image-updater.argoproj.io/git-branch: main
-    argocd-image-updater.argoproj.io/backend.pull-secret: secret:argocd/docker-config
+    argocd-image-updater.argoproj.io/backend.pull-secret: pullsecret:argocd/docker-config
     argocd-image-updater.argoproj.io/write-back-target: kustomization
-
 spec:
   project: default
-  
   source:
     repoURL: https://github.com/noumantechie/cd.git
     targetRevision: main
     path: k8s-prod/backend
-  
   destination:
     server: https://kubernetes.default.svc
     namespace: prod
-  
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-
 ---
-# ═══════════════════════════════════════════════════════
-# Frontend Application
-# ═══════════════════════════════════════════════════════
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -47,53 +37,42 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: frontend=noman071/frontend
     argocd-image-updater.argoproj.io/frontend.update-strategy: semver
-    argocd-image-updater.argoproj.io/frontend.allow-tags: regexp:^1\.0\.0-([0-9]+)$
+    argocd-image-updater.argoproj.io/frontend.allow-tags: regexp:^1\\.0\\.0-[0-9]+$
+    argocd-image-updater.argoproj.io/frontend.ignore-tags: latest
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
     argocd-image-updater.argoproj.io/git-branch: main
-    argocd-image-updater.argoproj.io/frontend.pull-secret: secret:argocd/docker-config
+    argocd-image-updater.argoproj.io/frontend.pull-secret: pullsecret:argocd/docker-config
     argocd-image-updater.argoproj.io/write-back-target: kustomization
-
 spec:
   project: default
-  
   source:
     repoURL: https://github.com/noumantechie/cd.git
     targetRevision: main
     path: k8s-prod/frontend
-  
   destination:
     server: https://kubernetes.default.svc
     namespace: prod
-  
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-
 ---
-# ═══════════════════════════════════════════════════════
-# MySQL Application
-# ═══════════════════════════════════════════════════════
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mysql-app
   namespace: argocd
-
 spec:
   project: default
-  
   source:
     repoURL: https://github.com/noumantechie/cd.git
     targetRevision: main
     path: k8s-prod/mysql
-  
   destination:
     server: https://kubernetes.default.svc
     namespace: prod
-  
   syncPolicy:
     automated:
       prune: true
