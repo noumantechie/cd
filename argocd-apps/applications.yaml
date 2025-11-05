@@ -22,7 +22,7 @@ spec:
   source:
     repoURL: https://github.com/noumantechie/cd.git
     targetRevision: main
-    path: k8s-prod/backend  # ← Changed!
+    path: k8s-prod/backend
   
   destination:
     server: https://kubernetes.default.svc
@@ -59,7 +59,7 @@ spec:
   source:
     repoURL: https://github.com/noumantechie/cd.git
     targetRevision: main
-    path: k8s-prod/frontend  # ← Changed!
+    path: k8s-prod/frontend
   
   destination:
     server: https://kubernetes.default.svc
@@ -88,7 +88,7 @@ spec:
   source:
     repoURL: https://github.com/noumantechie/cd.git
     targetRevision: main
-    path: k8s-prod/mysql  # ← Changed!
+    path: k8s-prod/mysql
   
   destination:
     server: https://kubernetes.default.svc
