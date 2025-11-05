@@ -1,3 +1,4 @@
+---
 # Frontend Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: noman071/frontend  # ← Tag removed, kustomize will add
+          image: noman071/frontend
           ports:
             - containerPort: 80
 ---
