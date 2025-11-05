@@ -4,4 +4,4 @@ resources:
   - frontend.yaml
 images:
   - name: noman071/frontend
-    newTag: 1.0.0-12
+    newTag: 1.0.0-13
