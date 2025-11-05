@@ -4,4 +4,4 @@ resources:
   - backend.yaml
 images:
   - name: noman071/backend
-    newTag: 1.0.0-12
+    newTag: 1.0.0-13
